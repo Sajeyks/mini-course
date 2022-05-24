@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-8#y5cs2!!@fir%6q(rtn%5jz9(onr)gs6kpvks51$9#g#l3)tr
 DEBUG = True
 
 ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
+
 # Application definition
 
 INSTALLED_APPS = [
