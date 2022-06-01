@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
 
 AUTH_USER_MODEL = 'main.User'
 
-CSRF_TRUSTED_ORIGINS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
+CSRF_TRUSTED_ORIGINS = ['{{EDUCATIVE_LIVE_VM_URL}}']
 
 # Application definition
 
