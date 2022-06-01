@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
 
 AUTH_USER_MODEL = 'main.User'
 
-CSRF_TRUSTED_ORIGINS = ['{{EDUCATIVE_LIVE_VM_URL}}']
 
 # Application definition
 
@@ -48,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
