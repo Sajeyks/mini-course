@@ -33,6 +33,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://55115d2q5o8xx.educative.run'
 ]
 
+CSRF_COOKIE_DOMAIN = 'https://55115d2q5o8xx.educative.run'
+
 # Application definition
 
 INSTALLED_APPS = [
