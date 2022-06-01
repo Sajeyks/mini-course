@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
 
+AUTH_USER_MODEL = 'main.User'
+
+CSRF_TRUSTED_ORIGINS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -126,10 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
+        'rest_framework_simplejwt.authentication.JWTAuthentication', )}
 
-AUTH_USER_MODEL = 'main.User'
-
-CSRF_TRUSTED_ORIGINS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
