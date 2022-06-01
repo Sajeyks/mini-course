@@ -30,10 +30,9 @@ ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
 AUTH_USER_MODEL = 'main.User'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://55115d2q5o8xx.educative.run'
+    '{{EDUCATIVE_LIVE_VM_URL}}'
 ]
 
-CSRF_COOKIE_DOMAIN = 'https://55115d2q5o8xx.educative.run'
 
 # Application definition
 
