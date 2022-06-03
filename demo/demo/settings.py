@@ -29,10 +29,12 @@ ALLOWED_HOSTS = ['{{EDUCATIVE_LIVE_VM_URL}}'.replace('https://','')]
 
 AUTH_USER_MODEL = 'main.User'
 
-CSRF_TRUSTED_ORIGINS = [
-    '{{EDUCATIVE_LIVE_VM_URL}}'
-]
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'trysimplejwt@gmail.com'
+EMAIL_HOST_PASSWORD = 'ygdirvgymnezeskg'
 
 # Application definition
 
