@@ -21,3 +21,9 @@ class EmailVerificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['token']
+
+
+class ResendVerificationEmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['email']
