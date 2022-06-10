@@ -1,4 +1,4 @@
-from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer
+from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer
 from rest_framework.response import Response
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import get_user_model
@@ -85,12 +85,3 @@ class ResendVerificationEmailView(views.APIView):
             
         except User.DoesNotExist as exc:
             return Response({'The email address does not not match any user account.'}, status = status.HTTP_400_BAD_REQUEST)
-    
-
-class LoginView(generics.GenericAPIView):
-    serializer_class = LoginSerializer
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
