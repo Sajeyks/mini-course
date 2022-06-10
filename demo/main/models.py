@@ -47,7 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-    def tokens(self):
+    def get_tokens(self):
         refresh = RefreshToken.for_user(self)
         return {
             'refresh': str(refresh),
