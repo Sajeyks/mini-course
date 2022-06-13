@@ -34,11 +34,11 @@ class ResendVerificationEmailSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length=255, min_length=3)
     password = serializers.CharField(max_length=68, min_length=8, write_only=True)
-    token = serializers.CharField(max_length=68, min_length=8, read_only=True)
+    tokens = serializers.CharField(max_length=68, min_length=8, read_only=True)
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'token']
+        fields = ['email', 'password', 'tokens']
 
     def validate(self, attrs):
         email = attrs.get('email', '')
