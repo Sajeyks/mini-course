@@ -33,7 +33,7 @@ class RegistrationView(generics.GenericAPIView):
         relativeLink = reverse('verify-email')
 
         verification_link = 'http://' + current_site_domain + relativeLink + "?token=" + str(token)
-        message = ". Use the link below to verify your email.\n If you were not were not expecting any account verifivation email, please ignore this \n"
+        message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
         email_body = "Hi " + user.email+ message + verification_link
         data = {'email_body': email_body,'to_email': user.email,
          'email_subject':'Demo Email Verification'}
@@ -76,7 +76,7 @@ class ResendVerificationEmailView(views.APIView):
                 current_site_domain = get_current_site(request).domain
                 relativeLink = reverse('verify-email')
                 verification_link = 'http://' + current_site_domain + relativeLink + "?token=" + str(token)
-                message = ". Use the link below to verify your email.\n If you were not were not expecting any account verifivation email, please ignore this \n"
+                message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
                 email_body = "Hi " + Email+ message + verification_link
                 data = {'email_body': email_body,'to_email': Email,
                 'email_subject':'Demo Email Verification'}
