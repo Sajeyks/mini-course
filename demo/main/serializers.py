@@ -57,3 +57,6 @@ class LoginSerializer(serializers.ModelSerializer):
             'email': user.email,
             'tokens': user.get_tokens
         }
+        
+class RequestPasswordResetEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField()
