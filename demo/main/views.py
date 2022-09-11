@@ -1,4 +1,4 @@
-from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer #Updated
+from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer, SetNewPasswordSerializer #Updated
 from rest_framework.response import Response
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import get_user_model
@@ -142,3 +142,12 @@ class PasswordResetTokenValidationView(generics.GenericAPIView):
         except DjangoUnicodeDecodeError as exc:
             if not PasswordResetTokenGenerator().check_token(user):
                 return Response({'Error': 'Token is not valid! Please request for a new one!'}, status=status.HTTP_401_UNAUTHORIZED)
+            
+            
+class SetNewPasswordView(generics.GenericAPIView):
+    serializer_class = SetNewPasswordSerializer
+
+    def put(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response({'success': True, 'message':'Password changed successfully'}, status= status.HTTP_200_OK)
