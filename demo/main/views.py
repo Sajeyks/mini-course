@@ -10,8 +10,8 @@ from django.conf import settings
 import jwt
 
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.utils.encoding import smart_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import smart_bytes, smart_str, DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 User = get_user_model()
 
@@ -125,3 +125,20 @@ class RequestPaswordResetEmailView(generics.GenericAPIView):
             Mail.send_email(data)
             
         return Response({'Success': 'Password reset email sent'}, status=status.HTTP_200_OK)
+    
+    
+class PasswordResetTokenValidationView(generics.GenericAPIView):
+    def get(self, request, uidb64, token):
+        
+        try:
+            id = smart_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(id=id)
+
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                return Response({'Error': 'Password reset link is expired! Please request for a new one!'}, status=status.HTTP_401_UNAUTHORIZED)
+
+            return Response({'Success':True, 'Message':'Valid Credentials','uidb64':uidb64, 'token': token}, status=status.HTTP_200_OK)
+
+        except DjangoUnicodeDecodeError as exc:
+            if not PasswordResetTokenGenerator().check_token(user):
+                return Response({'Error': 'Token is not valid! Please request for a new one!'}, status=status.HTTP_401_UNAUTHORIZED)
