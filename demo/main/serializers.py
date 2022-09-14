@@ -87,3 +87,10 @@ class SetNewPasswordSerializer(serializers.Serializer):
         except Exception as e:
             raise AuthenticationFailed('The reset link is invalid or expired.', 401)
         return super().validate(attrs)
+    
+    
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ["url","id","email","is_active","is_staff"]

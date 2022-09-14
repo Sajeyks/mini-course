@@ -1,4 +1,4 @@
-from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer, SetNewPasswordSerializer #Updated
+from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer, SetNewPasswordSerializer, UserSerializer
 from rest_framework.response import Response
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import get_user_model
@@ -151,3 +151,12 @@ class SetNewPasswordView(generics.GenericAPIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         return Response({'success': True, 'message':'Password changed successfully'}, status= status.HTTP_200_OK)
+    
+    
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
