@@ -89,8 +89,8 @@ class SetNewPasswordSerializer(serializers.Serializer):
         return super().validate(attrs)
     
     
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["url","id","email","is_active","is_staff"]
+        fields = ["id","email","is_active","is_staff"]
