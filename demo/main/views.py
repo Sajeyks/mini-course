@@ -36,7 +36,7 @@ class RegistrationView(generics.GenericAPIView):
         current_site_domain = get_current_site(request).domain
         relativeLink = reverse('verify-email')
 
-        verification_link = 'http://' + current_site_domain + relativeLink + "?token=" + str(token)
+        verification_link = 'https://' + current_site_domain + relativeLink + "?token=" + str(token)
         message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
         email_body = "Hi " + user.email+ message + verification_link
         data = {'email_body': email_body,'to_email': user.email,
@@ -79,7 +79,7 @@ class ResendVerificationEmailView(views.APIView):
                 token = RefreshToken.for_user(user).access_token
                 current_site_domain = get_current_site(request).domain
                 relativeLink = reverse('verify-email')
-                verification_link = 'http://' + current_site_domain + relativeLink + "?token=" + str(token)
+                verification_link = 'https://' + current_site_domain + relativeLink + "?token=" + str(token)
                 message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
                 email_body = "Hi " + Email+ message + verification_link
                 data = {'email_body': email_body,'to_email': Email,
@@ -116,7 +116,7 @@ class RequestPaswordResetEmailView(generics.GenericAPIView):
 
             current_site = get_current_site(request=request).domain
             relativeLink = reverse('password-reset-confirm', kwargs={'uidb64': uidb64, 'token': token})
-            absurl = 'http://' + current_site + relativeLink 
+            absurl = 'https://' + current_site + relativeLink 
             
             email_body = "Hello! \n Use the link below to reset your password \n" + absurl
             data = {'email_body': email_body,'to_email': user.email,
