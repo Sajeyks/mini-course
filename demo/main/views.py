@@ -37,7 +37,7 @@ class RegistrationView(generics.GenericAPIView):
         relativeLink = reverse('verify-email')
 
         verification_link = 'https://' + current_site_domain + relativeLink + "?token=" + str(token)
-        message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
+        message = ". Use the link below to verify your email.\n If you were not expecting any account verification email, please ignore this \n"
         email_body = "Hi " + user.email+ message + verification_link
         data = {'email_body': email_body,'to_email': user.email,
          'email_subject':'Demo Email Verification'}
@@ -58,7 +58,7 @@ class EmailVerificationView(views.APIView):
                 user.is_verified = True
                 user.is_active = True
                 user.save()
-            return Response({'Email Succesfully verified'}, status = status.HTTP_200_OK)
+            return Response({'Email Successfully verified'}, status = status.HTTP_200_OK)
 
         except jwt.ExpiredSignatureError as identifier:
             return Response({'error': 'Activation Expired'}, status= status.HTTP_400_BAD_REQUEST)
@@ -80,7 +80,7 @@ class ResendVerificationEmailView(views.APIView):
                 current_site_domain = get_current_site(request).domain
                 relativeLink = reverse('verify-email')
                 verification_link = 'https://' + current_site_domain + relativeLink + "?token=" + str(token)
-                message = ". Use the link below to verify your email.\n If you were not expecting any account verifivation email, please ignore this \n"
+                message = ". Use the link below to verify your email.\n If you were not expecting any account verification email, please ignore this \n"
                 email_body = "Hi " + Email+ message + verification_link
                 data = {'email_body': email_body,'to_email': Email,
                 'email_subject':'Demo Email Verification'}
