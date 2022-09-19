@@ -10,7 +10,7 @@ urlpatterns = [
     path('resend-verification-email/', views.ResendVerificationEmailView.as_view(), name = "resend-verification-email"),
     path('login/', views.LoginView.as_view(), name="login"),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('request-password-reset-email/', views.RequestPaswordResetEmailView.as_view(), name='request-password-reset-email'),
+    path('request-password-reset-email/', views.RequestPasswordResetEmailView.as_view(), name='request-password-reset-email'),
     path('password-reset/<uidb64>/<token>/', views.PasswordResetTokenValidationView.as_view(), name='password-reset-confirm'),
     path('password-reset/', views.SetNewPasswordView.as_view(), name='password-reset'),
  ]  
