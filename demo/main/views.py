@@ -100,7 +100,7 @@ class LoginView(generics.GenericAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class RequestPaswordResetEmailView(generics.GenericAPIView):
+class RequestPasswordResetEmailView(generics.GenericAPIView):
     serializer_class = RequestPasswordResetEmailSerializer
 
     def post(self, request):
