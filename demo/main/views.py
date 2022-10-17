@@ -1,11 +1,11 @@
-from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer, SetNewPasswordSerializer, UserSerializer
+from .serializers import RegistrationSerializer, EmailVerificationSerializer, ResendVerificationEmailSerializer, LoginSerializer, RequestPasswordResetEmailSerializer, SetNewPasswordSerializer, UserSerializer, LogoutSerializer
 from rest_framework.response import Response
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from .utils import Mail
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import generics, status, views
+from rest_framework import generics, status, views, permissions
 from django.conf import settings
 import jwt
 
@@ -160,3 +160,16 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
+    
+class LogoutView(generics.GenericAPIView):
+    serializer_class = LogoutSerializer
+ 
+    # permission_classes = (permissions.IsAuthenticated,)
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response({'success': True, 'message':'Logged out successfully'},status=status.HTTP_204_NO_CONTENT)
