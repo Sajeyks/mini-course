@@ -8,14 +8,29 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import generics, status, views, permissions
 from django.conf import settings
 import jwt
-
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_bytes, smart_str, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
 
 User = get_user_model()
 
 # Create your views here.
+
+@api_view(['GET','HEAD'])
+def api_root(request, format=None):
+    return Response({
+        'register': reverse('register', request=request, format=None),
+        'login': reverse('login', request=request, format=None),
+        'refresh-token': reverse('token_refresh', request=request, format=None),
+        'resend-verification-email': reverse('resend-verification-email', request=request, format=None),
+        'request-password-reset-email': reverse('request-password-reset-email', request=request, format=None),
+        'password-reset': reverse('password-reset', request=request, format=None),
+        'user-list': reverse('user-list', request=request, format=None),
+        'logout': reverse('logout', request=request, format=None),
+        
+    })
 
 class RegistrationView(generics.GenericAPIView):
 

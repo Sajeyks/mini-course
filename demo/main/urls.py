@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
+    path('', views.api_root, name='main'),
     path('register/', views.RegistrationView.as_view(), name="register"),
     path('verify-email/', views.EmailVerificationView.as_view(), name = "verify-email"),
     path('resend-verification-email/', views.ResendVerificationEmailView.as_view(), name = "resend-verification-email"),
