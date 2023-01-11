@@ -49,11 +49,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'main',
     'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',  # new 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",  # New 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,6 +64,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'demo.urls'
+
+CORS_ALLOW_ALL_ORIGINS: True
 
 TEMPLATES = [
     {
