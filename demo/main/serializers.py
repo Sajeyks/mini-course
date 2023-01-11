@@ -87,3 +87,7 @@ class SetNewPasswordSerializer(serializers.Serializer):
         except Exception as e:
             raise AuthenticationFailed('The reset link is invalid or expired.', 401)
         return super().validate(attrs)
+
+
+
+
