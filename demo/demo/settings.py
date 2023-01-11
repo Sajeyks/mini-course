@@ -131,3 +131,7 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'main.User'
+
+
+
+
