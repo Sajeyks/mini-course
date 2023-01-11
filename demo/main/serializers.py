@@ -110,3 +110,7 @@ class LogoutSerializer(serializers.Serializer):
             RefreshToken(self.token).blacklist()
         except TokenError:
             raise ValidationError({'incorrect_token': 'The token is either invalid or expired'})
+        
+        
+        
+        
