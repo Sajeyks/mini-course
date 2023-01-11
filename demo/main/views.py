@@ -125,3 +125,8 @@ class RequestPasswordResetEmailView(generics.GenericAPIView):
             Mail.send_email(data)
             
         return Response({'Success': 'Password reset email sent'}, status=status.HTTP_200_OK)
+
+
+
+
+
