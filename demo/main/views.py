@@ -172,4 +172,4 @@ class LogoutView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response({'success': True, 'message':'Logged out successfully'},status=status.HTTP_204_NO_CONTENT)
+        return Response({'success': True, 'message':'Logged out successfully'},status=status.HTTP_200_OK)
