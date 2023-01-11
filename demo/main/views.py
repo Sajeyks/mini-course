@@ -86,3 +86,7 @@ class ResendVerificationEmailView(views.APIView):
         except User.DoesNotExist as exc:
             return Response({'The email address does not not match any user account.'}, status = status.HTTP_400_BAD_REQUEST)
     
+
+
+
+
