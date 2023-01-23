@@ -21,14 +21,14 @@ User = get_user_model()
 @api_view(['GET','HEAD'])
 def api_root(request, format=None):
     return Response({
-        'register': reverse('register', request=request, format=None),
-        'login': reverse('login', request=request, format=None),
-        'refresh-token': reverse('token_refresh', request=request, format=None),
-        'resend-verification-email': reverse('resend-verification-email', request=request, format=None),
-        'request-password-reset-email': reverse('request-password-reset-email', request=request, format=None),
-        'password-reset': reverse('password-reset', request=request, format=None),
-        'user-list': reverse('user-list', request=request, format=None),
-        'logout': reverse('logout', request=request, format=None),
+        'register': str(reverse('register', request=request, format=None)).replace("http://", "https://"),
+        'login': str(reverse('login', request=request, format=None)).replace("http://", "https://"),
+        'refresh-token': str(reverse('token_refresh', request=request, format=None)).replace("http://", "https://"),
+        'resend-verification-email': str(reverse('resend-verification-email', request=request, format=None)).replace("http://", "https://"),
+        'request-password-reset-email': str(reverse('request-password-reset-email', request=request, format=None)).replace("http://", "https://"),
+        'password-reset': str(reverse('password-reset', request=request, format=None)).replace("http://", "https://"),
+        'user-list': str(reverse('user-list', request=request, format=None)).replace("http://", "https://"),
+        'logout': str(reverse('logout', request=request, format=None)).replace("http://", "https://"),
         
     })
 
